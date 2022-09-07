@@ -1,0 +1,20 @@
+create table TB_PROF (
+codProf number(6) primary key, 
+nomeProf varchar(20), 
+qntAluos number(5), 
+endereco varchar(50),
+telefone varchar(10),
+categoria varchar(15)
+) 
+
+
+create table TB_ALUNOF(
+codAluno number(6) primary key, 
+nomeAluno varchar(20),
+faculdade varchar(20),
+turma varchar(10),
+telefone varchar(10)
+)
+
+
+ 
