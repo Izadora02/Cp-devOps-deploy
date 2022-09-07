@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html
+  lang="pt-br"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Professores</title>
+  </head>
+  <body>
+    <div layout:fragment="body">
+      <h1 class="mb-4 mt-4">Professores</h1>
+
+      <p
+        th:if="${msg != null}"
+        th:text="${msg}"
+        class="mb-4 alert alert-success"
+      ></p>
+
+      <table class="table">
+        <tr>
+          <th>Nome</th>
+          <th>Alunos</th>
+          <th>Endereço</th>
+          <th>Telefone</th>
+          <th>Categoria</th>
+          <th colspan="2">Ações</th>
+        </tr>
+        <tr th:each="professor:${professorFacul}">
+          <td th:text="${professor.nomeProf}"></td>
+          <td th:text="${professor.qntAlunos}"></td>
+          <td th:text="${professor.endereco}"></td>
+          <td th:text="${professor.telefone}"></td>
+          <td th:text="${professor.categoria}"></td>
+          <td>
+            <form
+              th:action="@{/professor/excluir/}+${professor.codProf}"
+              method="post"
+              class="form-inline"
+            >
+              <a
+                th:href="@{/professor/editar/}+${professor.codProf}"
+                class="btn btn-outline-primary mr-2"
+                >Editar</a
+              >
+              <button type="submit" class="btn btn-outline-danger">
+                Excluir
+              </button>
+            </form>
+          </td>
+        </tr>
+      </table>
+      <a class="btn btn-outline-primary" th:href="@{/professor/cadastrar}"
+        >Cadastrar professor</a
+      >
+    </div>
+  </body>
+</html>

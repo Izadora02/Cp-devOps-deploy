@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html
+  lang="pt-br"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fromulario Professor</title>
+  </head>
+  <body>
+    <div layout:fragment="body">
+      <form
+        class="mt-4"
+        th:action="@{/professor/cadastrar}"
+        method="post"
+        th:object="${professorFacul}"
+      >
+        <input th:field="*{codProf}" type="hidden" />
+
+        <div class="form-group">
+          <label for="nomeProf">Nome do Professor</label>
+          <input
+            th:field="*{nomeProf}"
+            type="text"
+            class="form-control"
+            id="nomeProf"
+          />
+        </div>
+        <div class="form-group">
+          <label for="qntAlunos">Quantidade de Alunos</label>
+          <input
+            th:field="*{qntAlunos}"
+            type="number"
+            class="form-control"
+            id="qntAlunos"
+          />
+        </div>
+        <div class="form-group">
+          <label for="endereco">Endereço</label>
+          <input
+            th:field="*{endereco}"
+            type="text"
+            class="form-control"
+            id="endereco"
+          />
+        </div>
+        <div class="form-group">
+          <label for="telefone">Telefone</label>
+          <input
+            th:field="*{telefone}"
+            type="number"
+            class="form-control"
+            id="telefone"
+          />
+        </div>
+        <select class="form-control mb-2" th:field="*{categoria}">
+          <option value="option1">Selecione uma categoria</option>
+          <option
+            th:each="categoria : ${T(br.com.tage.core.model.Categoria).values()}"
+            th:value="${categoria}"
+            th:text="${categoria}"
+          ></option>
+        </select>
+        <button type="submit" class="btn btn-outline-success mr-2">
+          Cadastrar
+        </button>
+        <a th:href="@{/}" class="btn btn-outline-danger">Voltar</a>
+      </form>
+    </div>
+  </body>
+</html>

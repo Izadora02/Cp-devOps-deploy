@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html
+  lang="pt-br"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layout}"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fromulario Aluno</title>
+  </head>
+  <body>
+    <div layout:fragment="body">
+      <form
+        class="mt-4"
+        th:action="@{/aluno/cadastrar}"
+        method="post"
+        th:object="${alunoFacul}"
+      >
+        <input th:field="*{codAluno}" type="hidden" />
+
+        <div class="form-group">
+          <label for="nomeAluno">Nome do Aluno</label>
+          <input
+            th:field="*{nomeAluno}"
+            type="text"
+            class="form-control"
+            id="nomeAluno"
+          />
+        </div>
+        <div class="form-group">
+          <label for="faculdade">Faculdade</label>
+          <input
+            th:field="*{faculdade}"
+            type="text"
+            class="form-control"
+            id="faculdade"
+          />
+        </div>
+        <div class="form-group">
+          <label for="turma">Turma</label>
+          <input
+            th:field="*{turma}"
+            type="text"
+            class="form-control"
+            id="turma"
+          />
+        </div>
+        <div class="form-group">
+          <label for="telefone">Telefone</label>
+          <input
+            th:field="*{telefone}"
+            type="number"
+            class="form-control"
+            id="telefone"
+          />
+        </div>
+        <button type="submit" class="btn btn-outline-success mr-2">
+          Cadastrar
+        </button>
+        <a th:href="@{/}" class="btn btn-outline-danger">Voltar</a>
+      </form>
+    </div>
+  </body>
+</html>
